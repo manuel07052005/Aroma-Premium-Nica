@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Galería con Categorías y Carrito</title>
+  <title>Galería de Perfumes</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -14,6 +14,7 @@
     }
     h1 {
       color: #004080;
+      margin-bottom: 20px;
     }
     .filtros {
       margin-bottom: 20px;
@@ -26,6 +27,11 @@
       color: white;
       border-radius: 5px;
       cursor: pointer;
+      transition: 0.3s;
+    }
+    .filtros button:hover {
+      background-color: #0066cc;
+      transform: scale(1.05);
     }
     .galeria {
       display: flex;
@@ -38,8 +44,13 @@
       background-color: white;
       padding: 15px;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       text-align: left;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .producto:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     }
     .producto img {
       width: 100%;
@@ -66,6 +77,10 @@
       border-radius: 5px;
       cursor: pointer;
       z-index: 1100;
+      transition: 0.3s;
+    }
+    .carrito:hover {
+      background-color: #0066cc;
     }
     .btn-carrito {
       margin-top: 10px;
@@ -76,6 +91,11 @@
       border-radius: 5px;
       cursor: pointer;
       width: 100%;
+      transition: 0.3s;
+    }
+    .btn-carrito:hover {
+      background-color: #00b300;
+      transform: scale(1.05);
     }
     #metodosPago button {
       margin: 5px;
@@ -85,6 +105,11 @@
       color: white;
       border-radius: 5px;
       cursor: pointer;
+      transition: 0.3s;
+    }
+    #metodosPago button:hover {
+      background-color: #0066cc;
+      transform: scale(1.05);
     }
     #mensajePago {
       margin-top: 10px;
@@ -106,6 +131,40 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: 0.3s;
+    }
+    #formularioCliente button:hover {
+      background-color: #00b300;
+    }
+    /* Modal */
+    #modalCarrito {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      color: #004080;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      padding: 20px;
+      z-index: 2000;
+      width: 350px;
+      max-width: 90%;
+      text-align: center;
+    }
+    #modalCarrito h3 {
+      margin-bottom: 15px;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .galeria {
+        flex-direction: column;
+        align-items: center;
+      }
+      .producto {
+        width: 90%;
+      }
     }
   </style>
 </head>
@@ -113,82 +172,73 @@
 <body>
   <div class="carrito">🛒 Carrito: <span id="contador">0</span></div>
 
-  <h1>Galería de Productos</h1>
+  <h1>Galería de Perfumes</h1>
 
   <div class="filtros">
     <button onclick="filtrar('todos')">Todos</button>
-    <button onclick="filtrar('laptop')">Laptops</button>
-    <button onclick="filtrar('impresora')">Impresoras</button>
-    <button onclick="filtrar('accesorio')">Accesorios</button>
-    <button onclick="filtrar('audifono')">Audífonos</button>
+    <button onclick="filtrar('masculino')">Masculinos</button>
+    <button onclick="filtrar('femenino')">Femeninos</button>
+    <button onclick="filtrar('unisex')">Unisex</button>
   </div>
 
   <div class="galeria" id="galeria">
-    <div class="producto laptop">
-      <img src="img/laptop.jpg" alt="Laptop">
-      <h3>Laptop Profesional</h3>
-      <p class="precio">$980.00</p>
-      <p>Potente equipo portátil para trabajo y estudio.</p>
+    <!-- Productos -->
+    <div class="producto masculino">
+      <img src="https://www.elhombre.com.br/wp-content/uploads/2023/05/imagens-el-hombre-60.png" alt="Perfume masculino">
+      <h3>Bleu de Chanel</h3>
+      <p class="precio">$120.00</p>
+      <p>Fragancia intensa y fresca para hombres modernos.</p>
       <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
     </div>
 
-    <div class="producto impresora">
-      <img src="img/impresora.jpg" alt="Impresora">
-      <h3>Impresora Multifuncional</h3>
-      <p class="precio">$220.00</p>
-      <p>Imprime, escanea y copia con rapidez.</p>
+    <div class="producto femenino">
+      <img src="https://images.unsplash.com/photo-1601758123927-8f5b3f0dc3db?auto=format&fit=crop&w=800&q=80" alt="Perfume femenino">
+      <h3>Bloom Desire</h3>
+      <p class="precio">$110.00</p>
+      <p>Aromas florales que enamoran al instante.</p>
       <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
     </div>
 
-    <div class="producto accesorio">
-      <img src="img/mouse.jpg" alt="Mouse">
-      <h3>Mouse Inalámbrico</h3>
-      <p class="precio">$18.00</p>
-      <p>Diseño ergonómico y batería duradera.</p>
+    <div class="producto unisex">
+      <img src="https://images.unsplash.com/photo-1616599189241-4a3f86e5d66a?auto=format&fit=crop&w=800&q=80" alt="Perfume unisex">
+      <h3>Aura Essence</h3>
+      <p class="precio">$130.00</p>
+      <p>Equilibrio perfecto entre notas frescas y cálidas.</p>
       <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
     </div>
 
-    <div class="producto laptop">
-      <img src="img/laptop2.jpg" alt="Laptop económica">
-      <h3>Laptop Estudiante</h3>
-      <p class="precio">$620.00</p>
-      <p>Ideal para tareas básicas y navegación.</p>
+    <div class="producto masculino">
+      <img src="https://images.unsplash.com/photo-1612831455549-90b9b02c9154?auto=format&fit=crop&w=800&q=80" alt="Perfume masculino">
+      <h3>Night Shadow</h3>
+      <p class="precio">$140.00</p>
+      <p>Un aroma misterioso y elegante para la noche.</p>
       <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
     </div>
 
-    <div class="producto impresora">
-      <img src="img/impresora2.jpg" alt="Impresora láser">
-      <h3>Impresora Láser</h3>
-      <p class="precio">$340.00</p>
-      <p>Alta velocidad y calidad profesional.</p>
+    <div class="producto femenino">
+      <img src="https://images.unsplash.com/photo-1618888728957-6a6f14e3a5d1?auto=format&fit=crop&w=800&q=80" alt="Perfume femenino">
+      <h3>Rose Mist</h3>
+      <p class="precio">$115.00</p>
+      <p>Delicada fragancia floral que resalta la feminidad.</p>
       <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
     </div>
 
-    <div class="producto audifono">
-      <img src="img/audifono.jpg" alt="Audífonos">
-      <h3>Audífonos Bluetooth</h3>
-      <p class="precio">$35.00</p>
-      <p>Sonido envolvente y batería de larga duración.</p>
-      <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto accesorio">
-      <img src="img/monitor.jpg" alt="Monitor">
-      <h3>Monitor LED 24"</h3>
-      <p class="precio">$180.00</p>
-      <p>Resolución Full HD con colores vivos.</p>
+    <div class="producto unisex">
+      <img src="https://images.unsplash.com/photo-1617122870930-f0df2c9c0e10?auto=format&fit=crop&w=800&q=80" alt="Perfume unisex">
+      <h3>Ocean Breeze</h3>
+      <p class="precio">$125.00</p>
+      <p>Refrescante aroma marino apto para todos.</p>
       <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
     </div>
   </div>
 
-  <!-- Modal para mostrar el carrito, formulario y métodos de pago -->
-  <div id="modalCarrito" style="display:none; position:fixed; top:60px; right:40px; background:white; color:#004080; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.2); padding:20px; z-index:1000;">
+  <!-- Modal Carrito -->
+  <div id="modalCarrito">
     <h3>Productos en el carrito</h3>
     <ul id="listaCarrito"></ul>
     <button onclick="mostrarFormulario()" style="margin-top:10px;">Comprar</button>
     <button onclick="cerrarModalCarrito()" style="margin-top:10px;">Cerrar</button>
-    
-    <!-- Formulario de datos del cliente -->
+
     <form id="formularioCliente" style="display:none; margin-top:15px; text-align:left;">
       <h4>Datos para la entrega en Nicaragua:</h4>
       <label>Nombre completo:<br>
@@ -203,7 +253,6 @@
       <button type="button" onclick="enviarDatosCliente()">Continuar</button>
     </form>
 
-    <!-- Métodos de pago -->
     <div id="metodosPago" style="display:none; margin-top:15px;">
       <h4>Selecciona un método de pago:</h4>
       <button onclick="pagar('Tarjeta de crédito/débito')">Tarjeta de crédito/débito</button>
@@ -232,13 +281,11 @@
       contador++;
       document.getElementById('contador').innerText = contador;
 
-      // Obtener el nombre del producto
       const producto = event.target.closest('.producto');
       const nombre = producto.querySelector('h3').innerText;
       productosCarrito.push(nombre);
     }
 
-    // Mostrar el modal al hacer clic en el carrito
     document.querySelector('.carrito').onclick = function() {
       const lista = document.getElementById('listaCarrito');
       lista.innerHTML = '';
@@ -259,9 +306,6 @@
 
     function cerrarModalCarrito() {
       document.getElementById('modalCarrito').style.display = 'none';
-      document.getElementById('formularioCliente').style.display = 'none';
-      document.getElementById('metodosPago').style.display = 'none';
-      document.getElementById('mensajePago').innerText = '';
     }
 
     function mostrarFormulario() {
@@ -271,7 +315,6 @@
     }
 
     function enviarDatosCliente() {
-      // Validar datos
       const nombre = document.getElementById('nombreCliente').value.trim();
       const telefono = document.getElementById('telefonoCliente').value.trim();
       const direccion = document.getElementById('direccionCliente').value.trim();

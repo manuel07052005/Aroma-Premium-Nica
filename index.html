@@ -1,29 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Inicio | Aroma premiun nica S.A.</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio | Aroma Premium Nica S.A.</title>
   <style>
-    body {
+    /* RESET Y ESTILOS GENERALES */
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
+      padding: 0;
     }
 
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #fff;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #004080;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 1000;
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    header nav a {
+      margin-left: 20px;
+      font-weight: bold;
+      color: white;
+      transition: 0.3s;
+    }
+
+    header nav a:hover {
+      color: #ffcc00;
+    }
+
+    /* HERO */
     .hero {
       background-image: url('https://editorialist.com/wp-content/uploads/2021/07/Sandalwood-Perfume-_-Holding_Social-Media.jpg');
       background-size: cover;
       background-position: center;
-      color: rgb(255, 255, 255);
+      color: white;
       text-align: center;
-      padding: 100px 20px;
+      padding: 150px 20px 100px 20px;
+      margin-top: 60px; /* Para que no quede debajo del header */
     }
 
     .hero h1 {
       font-size: 48px;
-      
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       text-shadow: 2px 2px 5px #000;
     }
 
@@ -39,20 +83,26 @@
     .botones a {
       background: #004080;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 25px;
       border-radius: 5px;
-      text-decoration: none;
-      margin: 5px;
       font-weight: bold;
+      margin: 5px;
       display: inline-block;
+      transition: 0.3s;
     }
 
+    .botones a:hover {
+      background: #0066cc;
+      transform: scale(1.05);
+    }
+
+    /* SECCIÓN DE SERVICIOS */
     .servicios {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-      padding: 40px 20px;
+      padding: 60px 20px;
       background-color: #f5f5f5;
     }
 
@@ -63,8 +113,9 @@
       overflow: hidden;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      text-decoration: none;
       color: white;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
     .card img {
@@ -90,66 +141,132 @@
       text-align: center;
     }
 
+    /* SECCIÓN DE NOTICIAS */
     #noticias {
       background: #eef4ff;
-      padding: 30px 20px;
+      padding: 60px 20px;
       text-align: center;
     }
 
+    #noticias h2 {
+      margin-bottom: 20px;
+      font-size: 32px;
+      color: #004080;
+    }
+
+    #noticias p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* FOOTER */
     footer {
       background-color: #004080;
       color: white;
       text-align: center;
-      padding: 20px;
+      padding: 30px 20px;
     }
 
     footer .redes a {
       color: #fff;
       text-decoration: none;
       margin: 0 10px;
+      transition: 0.3s;
+    }
+
+    footer .redes a:hover {
+      color: #ffcc00;
+    }
+
+    footer p {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+      .hero p {
+        font-size: 16px;
+      }
+      .card {
+        width: 90%;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      header nav {
+        margin-top: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  
 
-<header>
-  <div class="logo">Aroma premiun nica .</div>
-</header>
+  <header>
+    <div class="logo">Aroma Premium Nica</div>
+    <nav>
+      <a href="#hero">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
 
-<main>
-  <!-- HERO/PORTADA -->
-  <section class="hero">
-    <h1>Bienvenido a Aroma premiun nica</h1>
-    <p>QUIERES OLER COMO UN VERDADERO GANADOR Y SER UN IMAN PARA LAS MUJERES</p>
-  </section>
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <h1>Bienvenido a Aroma Premium Nica</h1>
+      <p>Quieres oler como un verdadero ganador y ser un imán para las mujeres</p>
+      <div class="botones">
+        <a href="#servicios">Ver Servicios</a>
+        <a href="#noticias">Noticias</a>
+      </div>
+    </section>
 
-  <!-- SECCIONES CON IMÁGENES -->
-  <section class="servicios">
-    <a href="asesoria.html" class="card">
-      <img src="img/descarga.jpg" alt="Asesoría Profesional">
-      <div class="texto-superior">Asesoría Profesional</div>
-    </a>
-    <a href="catalogo.html" class="card">
-      <img src="img/catalogo.jpg" alt="Catálogo en Línea">
-      <div class="texto-superior">Catálogo en Línea</div>
-    </a>
-  </section>
+    <!-- SERVICIOS -->
+    <section class="servicios" id="servicios">
+      <a href="asesoria.html" class="card">
+        <img src="img/descarga.jpg" alt="Asesoría Profesional">
+        <div class="texto-superior">Asesoría Profesional</div>
+      </a>
+      <a href="catalogo.html" class="card">
+        <img src="https://www.adslzone.net/app/uploads-adslzone.net/2019/04/compra-online.jpg" alt="Catálogo en Línea">
+        <div class="texto-superior">Catálogo en Línea</div>
+      </a>
+    </section>
 
-  <!-- NOTICIAS -->
+    <!-- NOTICIAS -->
+    <section id="noticias">
+      <h2>Últimas Noticias</h2>
+      <p>Descubre nuestros nuevos perfumes de edición limitada y las promociones exclusivas de este mes. ¡No te lo pierdas!</p>
+    </section>
+  </main>
 
-</main>
+  <footer id="contacto">
+    <div class="redes">
+      <a href="https://www.facebook.com" target="_blank">Facebook</a> |
+      <a href="https://www.twitter.com" target="_blank">Twitter</a> |
+      <a href="https://www.instagram.com" target="_blank">Instagram</a>
+    </div>
+    <p>Dirección: Ciudad Nueva Banana</p>
+    <p>Aroma Premium Nica S.A.</p>
+  </footer>
 
-<footer>
-  <div class="redes">
-    <a href="https://www.facebook.com" target="_blank">Facebook</a> |
-    <a href="https://www.twitter.com" target="_blank">Twitter</a> |
-    <a href="https://www.instagram.com" target="_blank">Instagram</a>
-  </div>
-  <p>Dirección: CUIDAD NUEVA BANANA</p>
-  <p>PREMIUN S.A.</p>
-</footer>
-
-<script src="scripts.js"></script>
+  <script>
+    // Scroll suave para enlaces de navegación
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>

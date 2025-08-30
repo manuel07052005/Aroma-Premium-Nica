@@ -2,11 +2,60 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Asesoría Personalizada</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #555;
+      font-size: 18px;
+      margin-bottom: 20px;
+      max-width: 500px;
+    }
+    a.button {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      background-color: #25D366; /* Color verde WhatsApp */
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    a.button:hover {
+      background-color: #128C7E;
+    }
+    a.button img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+  </style>
 </head>
 <body>
   <h1>Asesoría Profesional</h1>
   <p>Ofrecemos atención personalizada para ayudarte a elegir los mejores equipos.</p>
-  <a href="index.html">← Volver</a>
+  
+  <!-- Botón de Asesoría con ícono de WhatsApp -->
+  <a class="button" href="https://wa.me/50586100980?text=Hola,%20quiero%20recibir%20asesoría%20personalizada" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    Asesoría
+  </a>
 </body>
 </html>
