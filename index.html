@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio | Aroma Premium Nica S.A.</title>
+  <title>Aroma Premium Nica S.A.</title>
   <style>
     /* RESET Y ESTILOS GENERALES */
     * {
@@ -62,7 +62,7 @@
       color: white;
       text-align: center;
       padding: 150px 20px 100px 20px;
-      margin-top: 60px; /* Para que no quede debajo del header */
+      margin-top: 60px;
     }
 
     .hero h1 {
@@ -74,10 +74,6 @@
     .hero p {
       font-size: 20px;
       text-shadow: 1px 1px 3px #000;
-    }
-
-    .botones {
-      margin-top: 20px;
     }
 
     .botones a {
@@ -141,23 +137,157 @@
       text-align: center;
     }
 
-    /* SECCIÓN DE NOTICIAS */
-    #noticias {
-      background: #eef4ff;
+    /* GALERÍA */
+    #galeria {
       padding: 60px 20px;
+      background: #eef4ff;
       text-align: center;
     }
 
-    #noticias h2 {
-      margin-bottom: 20px;
+    #galeria h2 {
       font-size: 32px;
+      margin-bottom: 20px;
       color: #004080;
     }
 
-    #noticias p {
-      font-size: 18px;
-      max-width: 600px;
-      margin: 0 auto;
+    .filtros {
+      margin-bottom: 20px;
+    }
+
+    .filtros button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      background-color: #004080;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .filtros button:hover {
+      background-color: #0066cc;
+      transform: scale(1.05);
+    }
+
+    .galeria-productos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .producto {
+      width: 300px;
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      text-align: left;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .producto:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+
+    .producto img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .producto h3 {
+      margin: 10px 0 5px;
+      color: #004080;
+    }
+
+    .producto p {
+      margin: 5px 0;
+    }
+
+    .precio {
+      font-weight: bold;
+      color: #008000;
+    }
+
+    .btn-carrito {
+      margin-top: 10px;
+      background-color: #008000;
+      color: white;
+      padding: 8px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    .btn-carrito:hover {
+      background-color: #00b300;
+      transform: scale(1.05);
+    }
+
+    /* Carrito fijo */
+    .carrito {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      background-color: #004080;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1100;
+      transition: 0.3s;
+    }
+
+    .carrito:hover {
+      background-color: #0066cc;
+    }
+
+    /* Modal */
+    #modalCarrito {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      color: #004080;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      padding: 20px;
+      z-index: 2000;
+      width: 350px;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    #modalCarrito h3 {
+      margin-bottom: 15px;
+    }
+
+    #modalCarrito form input {
+      margin-bottom: 8px;
+      width: 100%;
+      padding: 6px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    #modalCarrito form button {
+      margin-top: 10px;
+      background-color: #008000;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #modalCarrito form button:hover {
+      background-color: #00b300;
     }
 
     /* FOOTER */
@@ -192,7 +322,7 @@
       .hero p {
         font-size: 16px;
       }
-      .card {
+      .card, .producto {
         width: 90%;
       }
       header {
@@ -207,66 +337,287 @@
 </head>
 <body>
 
-  <header>
-    <div class="logo">Aroma Premium Nica</div>
-    <nav>
-      <a href="#hero">Inicio</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#noticias">Noticias</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
+<header>
+  <div class="logo">Aroma Premium Nica</div>
+  <nav>
+    <a href="#hero">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#galeria">Galería</a>
+    <a href="#noticias">Noticias</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <h1>Bienvenido a Aroma Premium Nica</h1>
-      <p>Quieres oler como un verdadero ganador y ser un imán para las mujeres</p>
-      <div class="botones">
-        <a href="#servicios">Ver Servicios</a>
-        <a href="#noticias">Noticias</a>
-      </div>
-    </section>
+<div class="carrito">🛒 Carrito: <span id="contador">0</span></div>
 
-    <!-- SERVICIOS -->
-    <section class="servicios" id="servicios">
-      <a href="asesoria.html" class="card">
-        <img src="img/descarga.jpg" alt="Asesoría Profesional">
-        <div class="texto-superior">Asesoría Profesional</div>
-      </a>
-      <a href="catalogo.html" class="card">
-        <img src="https://www.adslzone.net/app/uploads-adslzone.net/2019/04/compra-online.jpg" alt="Catálogo en Línea">
-        <div class="texto-superior">Catálogo en Línea</div>
-      </a>
-    </section>
-
-    <!-- NOTICIAS -->
-    <section id="noticias">
-      <h2>Últimas Noticias</h2>
-      <p>Descubre nuestros nuevos perfumes de edición limitada y las promociones exclusivas de este mes. ¡No te lo pierdas!</p>
-    </section>
-  </main>
-
-  <footer id="contacto">
-    <div class="redes">
-      <a href="https://www.facebook.com" target="_blank">Facebook</a> |
-      <a href="https://www.twitter.com" target="_blank">Twitter</a> |
-      <a href="https://www.instagram.com" target="_blank">Instagram</a>
+<main>
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <h1>Bienvenido a Aroma Premium Nica</h1>
+    <p>Quieres oler como un verdadero ganador y ser un imán para las mujeres</p>
+    <div class="botones">
+      <a href="#servicios">Ver Servicios</a>
+      <a href="#galeria">Galería</a>
     </div>
-    <p>Dirección: Ciudad Nueva Banana</p>
-    <p>Aroma Premium Nica S.A.</p>
-  </footer>
+  </section>
 
-  <script>
-    // Scroll suave para enlaces de navegación
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+  <!-- SERVICIOS -->
+  <section class="servicios" id="servicios">
+    <a href="asesoria.html" class="card">
+      <img src="img/descarga.jpg" alt="Asesoría Profesional">
+      <div class="texto-superior">Asesoría Profesional</div>
+    </a>
+
+    <a href="#galeria" class="card">
+      <img src="https://www.adslzone.net/app/uploads-adslzone.net/2019/04/compra-online.jpg" alt="Catálogo en Línea">
+      <div class="texto-superior">Catálogo en Línea</div>
+    </a>
+  </section>
+
+  <!-- GALERÍA -->
+  <section id="galeria">
+    <h2>Galería de Perfumes</h2>
+
+    <div class="filtros">
+      <button onclick="filtrar('todos')">Todos</button>
+      <button onclick="filtrar('masculino')">Masculinos</button>
+      <button onclick="filtrar('femenino')">Femeninos</button>
+      <button onclick="filtrar('unisex')">Unisex</button>
+    </div>
+
+    <div class="galeria-productos" id="galeriaProductos">
+      <!-- Productos -->
+      <div class="producto masculino">
+        <img src="https://www.elhombre.com.br/wp-content/uploads/2023/05/imagens-el-hombre-60.png" alt="Perfume masculino">
+        <h3>Bleu de Chanel</h3>
+        <p class="precio">$120.00</p>
+        <p>Fragancia intensa y fresca para hombres modernos.</p>
+        <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto femenino">
+        <img src="https://media.glamour.mx/photos/62c2f5a3864b0d855fd704be/master/w_1600%2Cc_limit/perfumes-mujeres-poderosas-2.jpeg" alt="Perfume femenino">
+        <h3>Coco Chanel </h3>
+        <p class="precio">$110.00</p>
+        <p>Aromas florales que enamoran al instante.</p>
+        <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto unisex">
+        <img src="https://cdnx.jumpseller.com/perfumes-finos/image/6870208/resize/1200/1200?1601889262" alt="Perfume unisex">
+        <h3>Calvin Klein one </h3>
+        <p class="precio">$130.00</p>
+        <p>Equilibrio perfecto entre notas frescas y cálidas.</p>
+        <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto masculino">
+        <img src="https://karltayloreducation.com/wp-content/uploads/2022/04/Sauvage-Dior-700.jpg" alt="Perfume masculino">
+        <h3>Sauvague Dior</h3>
+        <p class="precio">$140.00</p>
+        <p>Un aroma misterioso y elegante para la noche.</p>
+        <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto femenino">
+        <img src="https://www.fragrancereview.com/php_assets/uploads/dolce-gabbana-the-one-eau-de-toilette.jpeg" alt="Perfume femenino">
+        <h3>Dolce Gabbana the one eau de toilette</h3>
+        <p class="precio">$115.00</p>
+        <p>Delicada fragancia floral que resalta la feminidad.</p>
+        <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
+      </div>
+
+      <div class="producto unisex">
+        <img src="https://fraguru.com/photogram/p1200/gk/1t/gzyDQuzSbcfICUGY.jpg" alt="Perfume unisex">
+        <h3>
+Khamrah Lattafa </h3>
+        <p class="precio">$50.00</p>
+        <p>Refrescante aroma marino apto para todos.</p>
+        <button class="btn-carrito" onclick="agregarCarrito(event)">Agregar al carrito</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICIAS -->
+  <section id="noticias">
+    <h2>Últimas Noticias</h2>
+    <p>Descubre nuestros nuevos perfumes de edición limitada y las promociones exclusivas de este mes. ¡No te lo pierdas!</p>
+  </section>
+</main>
+
+<footer id="contacto">
+  <div class="redes">
+    <a href="https://www.facebook.com" target="_blank">Facebook</a> |
+    <a href="https://www.twitter.com" target="_blank">Twitter</a> |
+    <a href="https://www.instagram.com" target="_blank">Instagram</a>
+  </div>
+  <p>Dirección: Ciudad Nueva Banana</p>
+  <p>Aroma Premium Nica S.A.</p>
+</footer>
+
+<!-- Modal Carrito -->
+<div id="modalCarrito">
+  <h3>Productos en el carrito</h3>
+  <ul id="listaCarrito"></ul>
+  <button onclick="mostrarFormulario()" style="margin-top:10px;">Comprar</button>
+  <button onclick="cerrarModalCarrito()" style="margin-top:10px;">Cerrar</button>
+
+  <form id="formularioCliente" style="display:none; margin-top:15px; text-align:left;">
+    <h4>Datos para la entrega en Nicaragua:</h4>
+    <label>Nombre completo:<br>
+      <input type="text" id="nombreCliente" required>
+    </label><br>
+    <label>Teléfono:<br>
+      <input type="tel" id="telefonoCliente" required>
+    </label><br>
+    <label>Dirección:<br>
+      <input type="text" id="direccionCliente" required>
+    </label><br>
+    <button type="button" onclick="enviarDatosCliente()">Continuar</button>
+  </form>
+
+  <div id="metodosPago" style="display:none; margin-top:15px;">
+    <h4>Selecciona un método de pago:</h4>
+    <button onclick="pagar('Tarjeta de crédito/débito')">Tarjeta de crédito/débito</button>
+    <button onclick="pagar('PayPal')">PayPal</button>
+    <button onclick="pagar('Transferencia bancaria')">Transferencia bancaria</button>
+    <div id="mensajePago"></div>
+  </div>
+</div>
+<!-- FORMULARIO CLIENTE -->
+<div id="formularioCliente" style="display:none;">
+  <h3>Datos del Cliente</h3>
+  <form id="formCompra">
+    <input type="text" id="nombre" placeholder="Nombre completo" required><br><br>
+    <input type="text" id="direccion" placeholder="Dirección de entrega" required><br><br>
+    <input type="tel" id="telefono" placeholder="Teléfono" required><br><br>
+    <button type="submit">Continuar</button>
+  </form>
+</div>
+
+<script>
+  // Scroll suave
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
       });
     });
-  </script>
+  });
+
+  // FILTRAR GALERÍA
+  function filtrar(categoria) {
+    const productos = document.querySelectorAll('.producto');
+    productos.forEach(p => {
+      if(categoria === 'todos' || p.classList.contains(categoria)) {
+        p.style.display = 'block';
+      } else {
+        p.style.display = 'none';
+      }
+    });
+  }
+
+  // CARRITO
+  let contador = 0;
+  let productosCarrito = [];
+
+  function agregarCarrito(event) {
+    contador++;
+    document.getElementById('contador').innerText = contador;
+    const producto = event.target.closest('.producto');
+    const nombre = producto.querySelector('h3').innerText;
+    productosCarrito.push(nombre);
+  }
+
+  document.querySelector('.carrito').onclick = function() {
+    const lista = document.getElementById('listaCarrito');
+    lista.innerHTML = '';
+    if(productosCarrito.length === 0) {
+      lista.innerHTML = '<li>No hay productos en el carrito.</li>';
+    } else {
+      productosCarrito.forEach(p => {
+        const li = document.createElement('li');
+        li.innerText = p;
+        lista.appendChild(li);
+      });
+    }
+    document.getElementById('modalCarrito').style.display = 'block';
+    document.getElementById('formularioCliente').style.display = 'none';
+    document.getElementById('metodosPago').style.display = 'none';
+    document.getElementById('mensajePago').innerText = '';
+  };
+
+  function cerrarModalCarrito() {
+    document.getElementById('modalCarrito').style.display = 'none';
+  }
+
+  function mostrarFormulario() {
+    document.getElementById('formularioCliente').style.display = 'block';
+    document.getElementById('metodosPago').style.display = 'none';
+    document.getElementById('mensajePago').innerText = '';
+  }
+
+  function enviarDatosCliente() {
+    const nombre = document.getElementById('nombreCliente').value.trim();
+    const telefono = document.getElementById('telefonoCliente').value.trim();
+    const direccion = document.getElementById('direccionCliente').value.trim();
+    if(!nombre || !telefono || !direccion) {
+      alert('Por favor, completa todos los datos.');
+      return;
+    }
+    document.getElementById('formularioCliente').style.display = 'none';
+    document.getElementById('metodosPago').style.display = 'block';
+  }
+
+  function pagar(metodo) {
+    document.getElementById('mensajePago').innerText =
+      '¡Gracias por tu compra! Pago realizado con ' + metodo + '. Pronto te contactaremos para la entrega en Nicaragua.';
+  }
+  // Guardar productos con nombre y precio
+function agregarCarrito(event) {
+  contador++;
+  document.getElementById('contador').innerText = contador;
+  const producto = event.target.closest('.producto');
+  const nombre = producto.querySelector('h3').innerText;
+  const precio = parseFloat(producto.querySelector('.precio').innerText.replace('$',''));
+  productosCarrito.push({ nombre, precio });
+}
+
+document.querySelector('.carrito').onclick = function() {
+  const lista = document.getElementById('listaCarrito');
+  lista.innerHTML = '';
+  if(productosCarrito.length === 0) {
+    lista.innerHTML = '<li>No hay productos en el carrito.</li>';
+  } else {
+    let total = 0;
+    productosCarrito.forEach(p => {
+      const li = document.createElement('li');
+      li.innerText = `${p.nombre} - $${p.precio.toFixed(2)}`;
+      lista.appendChild(li);
+      total += p.precio;
+    });
+    const liTotal = document.createElement('li');
+    liTotal.style.fontWeight = 'bold';
+    liTotal.innerText = `Total: $${total.toFixed(2)}`;
+    lista.appendChild(liTotal);
+  }
+  document.getElementById('modalCarrito').style.display = 'block';
+  document.getElementById('formularioCliente').style.display = 'none';
+  document.getElementById('metodosPago').style.display = 'none';
+  document.getElementById('mensajePago').innerText = '';
+};
+
+// Mostrar formulario y presupuesto
+function mostrarFormulario() {
+  let total = productosCarrito.reduce((suma, p) => suma + p.precio, 0);
+  alert(`El total de tu compra es: $${total.toFixed(2)}`);
+  document.getElementById('formularioCliente').style.display = 'block';
+  document.getElementById('metodosPago').style.display = 'none';
+  document.getElementById('mensajePago').innerText = '';
+}
+
+</script>
+
 </body>
 </html>
